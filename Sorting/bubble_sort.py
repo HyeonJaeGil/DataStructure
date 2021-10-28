@@ -4,6 +4,7 @@ from typing import MutableSequence
 
 
 def bubble_sort(a: MutableSequence)->None:
+    print("using bubble_sort ...")
     n = len(a)
     for i in range(n):
         for j in range(n-1, i, -1):
@@ -12,6 +13,7 @@ def bubble_sort(a: MutableSequence)->None:
 
 
 def bubble_sort_quick_break(a: MutableSequence)->None:
+    print("using bubble_sort with quick break ...")
     n = len(a)
     for i in range(n):
         change_count = 0
@@ -23,6 +25,7 @@ def bubble_sort_quick_break(a: MutableSequence)->None:
             break
 
 def bubble_sort_narrow_search(a: MutableSequence)-> None:
+    print("using bubble_sort with narrow search ...")
     n = len(a)
     left_bound = 0
     while left_bound < n-1:
@@ -34,6 +37,7 @@ def bubble_sort_narrow_search(a: MutableSequence)-> None:
         left_bound = last
 
 def shacker_sort(a: MutableSequence)-> None:
+    print("using shacker_sort ...")
     n = len(a)
     left = 0
     right = n-1
@@ -56,13 +60,28 @@ def shacker_sort(a: MutableSequence)-> None:
 
 if __name__=="__main__":
     array = [4,3,6,5,7,9,0,3,2,1]
-    # array = [0, 1, 2, 3, 3, 4, 5, 6, 7, 9]
-    print(array)
+    print(f"input array: {array}")
 
-    # bubble_sort(array)
-    # bubble_sort_quick_break(array)
-    # bubble_sort_narrow_search(array)
-    shacker_sort(array)
-    print(array)
+    while (True):
+        print("which algorithm? \n\
+            1:bubble_sort \n\
+            2:bubble_sort_quick_break \n\
+            3:bubble_sort_narrow_search \n\
+            4:shacker_sort \n\
+            Your input:\t", end="")
+        choice = int(input())
+        if choice in {1,2,3,4}:
+            break
+        else: print("Not valid number, Try again...")
+
+    func_dict = {
+        1: bubble_sort,
+        2: bubble_sort_quick_break,
+        3: bubble_sort_narrow_search,
+        4: shacker_sort
+    }
+
+    func_dict[choice](array)
+    print(f"output array: {array}") # [0, 1, 2, 3, 3, 4, 5, 6, 7, 9]
             
 
